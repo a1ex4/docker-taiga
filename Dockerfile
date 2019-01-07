@@ -42,7 +42,7 @@ WORKDIR /usr/src/taiga-back
 # fixes benhutchins/docker-taiga-example#4
 # ref benhutchins/docker-taiga#15
 ENV LANG C
-
+RUN sed -i 's/Pillow==4.1.1/Pillow==5.4.1/g' requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN echo "LANG=en_US.UTF-8" > /etc/default/locale
