@@ -9,5 +9,10 @@ pipeline {
         sh 'ls -l'
       }
     }
+    stage('Build image') {
+      steps {
+        sh 'docker build -t a1ex4/rpi-taiga .'
+      }
+    }
   }
 }
