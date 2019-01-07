@@ -1,16 +1,6 @@
-FROM python:3.5
-MAINTAINER Benjamin Hutchins <ben@hutchins.co>
+FROM arm32v7/python:3.5
 
 ENV DEBIAN_FRONTEND noninteractive
-
-# Version of Nginx to install
-ENV NGINX_VERSION 1.9.7-1~jessie
-
-RUN apt-key adv \
-  --keyserver hkp://pgp.mit.edu:80 \
-  --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
-
-RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list
 
 RUN set -x; \
     apt-get update \
@@ -18,7 +8,10 @@ RUN set -x; \
         locales \
         gettext \
         ca-certificates \
-        nginx=${NGINX_VERSION} \
+        nginx \
+        # libjpeg62 \
+        # libjpeg62-turbo-dev \
+        zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
