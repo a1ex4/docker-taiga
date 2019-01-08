@@ -7,8 +7,6 @@ pipeline {
         sh 'git submodule init'
         sh 'git submodule update'
         sh 'git submodule update --remote'
-        sh 'git submodule foreach git pull origin master'
-        sh 'git pull'
       }
     }
     stage('Build image') {
